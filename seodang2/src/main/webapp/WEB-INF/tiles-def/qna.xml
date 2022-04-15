@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="four" extends="main">
+    	<put-attribute name="title" value="회원가입"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberRegister.jsp"/>
+    </definition>
+    
+    <definition name="oqnaList" extends="main">
+    	<put-attribute name="title" value="QnA 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/oqna/oqnaList.jsp"/>
+    </definition>
+    
+    
+    <definition name="oqnaWrite" extends="main">
+    	<put-attribute name="title" value="QnA 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/oqna/oqnaWrite.jsp"/>
+    </definition>
+    
+    <definition name="oqnaDetailView" extends="main">
+    	<put-attribute name="title" value="QnA 상세글 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/oqna/oqnaDetailView.jsp"/>
+    </definition>
+    
+    <definition name="oqnaModify" extends="main">
+    	<put-attribute name="title" value="QnA 글 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/oqna/oqnaModify.jsp"/>
+    </definition>
+    
+    <definition name="adminMemberList" extends="main">
+    	<put-attribute name="title" value="회원목록(관리자 전용)"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberList.jsp"/>
+    </definition>
+    
+    <definition name="adminModifyUser" extends="main">
+    	<put-attribute name="title" value="회원정보 수정form(관리자 전용)"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminModifyUser.jsp"/>
+    </definition>
+  
+    <definition name="onqnaWrite" extends="main">
+    	<put-attribute name="title" value="온라인 클래스 1:1문의글 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onqna/onqnaWrite.jsp"/>
+    </definition>
+    
+     <definition name="newsList" extends="main">
+    	<put-attribute name="title" value="취업 뉴스"/>
+    	<put-attribute name="body" value="/WEB-INF/views/oqna/newsList.jsp"/>
+    </definition>
+    
+</tiles-definitions>
+
+

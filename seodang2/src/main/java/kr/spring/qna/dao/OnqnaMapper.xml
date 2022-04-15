@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.qna.dao.OnqnaMapper"> 
+	<!-- 글 목록처리1 -->
+	<select id="getOnqnaList" parameterType="map" resultType="onqnaVO">
+		SELECT
+		*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT 
+					q.onqna_num,
+					<![CDATA[REPLACE(REPLACE(q.title, '<', '&lt;'),'>','&gt;') title,]]>
+					q.reg_date,
+					u.id,
+					d.name,
+					u.auth
+				 FROM onqna q JOIN ouser	u 
+				 ON q.user_num = u.user_num
+				 JOIN ouser_detail d ON u.user_num = d.user_num
+				 
+				 	<where>
+			 			<if test="keyword!='' and keyfield==1">	
+			 				q.title LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==2">	
+			 				d.name LIKE '%' || #{keyword} || '%' and
+			 				u.auth = 3
+			 			</if>
+			 			<if test="keyword!='' and keyfield==3">	
+			 				d.name LIKE '%' || #{keyword} || '%' and
+			 				u.auth = 4
+			 			</if>			 			
+			 			<if test="keyword!='' and keyfield==4">	
+			 				u.id LIKE '%' || #{keyword} || '%' or
+			 				d.name LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==5">
+			 				q.title LIKE '%' || #{keyword} || '%' or
+			 				q.content LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 		</where>
+			 		
+				 ORDER BY q.onqna_num DESC)a)
+		 	 
+		<![CDATA[
+			WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+
+	<!-- 글 목록처리2 -->
+	<select id="selectOnqnaRowCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM onqna q JOIN ouser u 
+		ON q.user_num = u.user_num	
+		JOIN ouser_detail d ON u.user_num = d.user_num
+				 	<where>
+			 			<if test="keyword!='' and keyfield==1">	
+			 				q.title LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==2">	
+			 				d.name LIKE '%' || #{keyword} || '%' and
+			 				u.auth = 3
+			 			</if>
+			 			<if test="keyword!='' and keyfield==3">	
+			 				d.name LIKE '%' || #{keyword} || '%' and
+			 				u.auth = 4
+			 			</if>			 			
+			 			<if test="keyword!='' and keyfield==4">	
+			 				u.id LIKE '%' || #{keyword} || '%' or
+			 				d.name LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==5">
+			 				q.title LIKE '%' || #{keyword} || '%' or
+			 				q.content LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 		</where>
+		
+	</select>
+	
+	
+</mapper>
+
+

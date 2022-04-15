@@ -1,0 +1,128 @@
+@charset "UTF-8";
+.page-main ul{
+	list-style:none;
+	padding-bottom:50px;
+}
+.page-main li{
+	float:left;
+	margin-right:30px;
+}
+.container{
+	width:1200px; max-width:none!important;
+	}
+
+.page-main{
+	padding-left:30px;
+	text-align:center;
+}
+.page-main a{
+	display: inline-block;
+	font-size:11px;
+	padding-right:90px;
+	padding-bottom:20px;	
+	width:6px;
+	/* border: 1px solid red; */
+	border-radius: 25px;
+   	box-shadow : 0 5px 25px rgb(0 0 0 / 15%);  	
+}
+.page-main a li{
+	width:200px;
+}
+.mainOne{
+	text-align: center; 
+ 	width:1024px;
+	margin: 0 auto;
+	padding-left:120px;
+	background-color:#f8f9fa;
+	
+}
+.card{
+	width: 200px;
+	height: 200px;
+   	border-radius: 25px;
+   	box-shadow : 0 5px 25px rgb(0 0 0 / 35%);
+   	margin-right:60px;
+   	margin-bottom:20px;
+   	display: inline-block;
+}
+
+.card-header{
+	float:left; 
+	text-align:center;
+} 
+
+.card-ul{
+	margin-right:20px;
+	padding-right:20px;
+	text-align:left;
+}
+.card-ul li{
+	text-align:left;
+
+}
+.card-ul li img{
+	display:inline-block; 
+  	margin : 0 auto ;
+}
+.main-content{
+	width:1024px; 
+	padding-left:100px;
+	text-align: center; 
+}
+.main-title{
+	padding-top:100px;
+}
+.main-title span{
+	font-size:33px;
+	font-weight: 900 ;	
+}
+.sub-content{
+	font-size:28px;
+}
+.content-image{
+	width: 400px; 
+	margin:50px; 
+	text-align:center; 
+	padding-left:150px;
+}
+.main-category{
+	padding-bottom:50px;
+	padding-left:70px;
+}
+.main-category .category-s{
+	float:left;
+	margin-left:10px;
+	font-size:16px;
+	font-weight: 700;	
+}
+
+/* 말풍선 */
+.bubble
+{
+position: relative;
+width: 260px;
+height: 40px;
+padding: 0px;
+background: #f6e775;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding-top:10px;
+padding-left:20px;
+font-weight: 900 ;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 14px 8px 0;
+border-color: #f6e775 transparent;
+display: block;
+width: 0;
+z-index: 1;
+margin-left: -8px;
+bottom: -14px;
+left: 14%;
+}

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.item-space {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom:500px;
+}
+.item-space .horizontal-area {
+    margin: 10px 10px 27px 10px;
+    padding: 5px;
+    width: 22%;
+    height: 300px;
+    float: left;
+    overflow: hidden;
+    box-shadow: rgb(41 42 43 / 16%) 0px 2px 6px -2px;
+}
+.box {
+  position:relative;
+  transition: .5s ease; /* 필수는 아님 */
+ }
+.item-space .horizontal-area .name {
+    font-size: 0.8rem;
+}
+.item-space .horizontal-area .image-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 229px;
+    height: 185px;
+    border-radius: 7px;
+}
+a:hover img {
+  transform: scale(1.1);
+  transition: transform .35s;  
+}
+.item-space .horizontal-area .image-container img{
+	min-height: 12rem;;
+    min-width: 15rem;
+    overflow: hidden;
+    object-fit: contain;
+    border-color: #f5f5f5;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+.item-category {
+    width: 20%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    margin: 6px;
+}
+
+/* //////테이블/////// */
+.container{width:1600px; max-width:none!important;}
+table, tr, td{
+ border:none;
+}
+
+.main-content {
+	padding-top: 100px;
+	padding-bottom: 500px;
+}
+
+.table {
+	border-spacing: 0 15px;
+	border-collapse: separate;
+}
+.table thead tr th,
+.table thead tr td,
+.table tbody tr th,
+.table tbody tr td {
+	vertical-align: middle;
+	border: none;
+}
+.table thead tr th:nth-last-child(1),
+.table thead tr td:nth-last-child(1),
+.table tbody tr th:nth-last-child(1),
+.table tbody tr td:nth-last-child(1) {
+	text-align: center;
+}
+.table tbody tr {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+.table tbody tr td {
+	background: #fff;
+}
+.table tbody tr td:nth-child(1) {
+	border-radius: 5px 0 0 5px;
+}
+.table tbody tr td:nth-last-child(1) {
+	border-radius: 0 5px 5px 0;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+}
+.user-info__img img {
+	margin-right: 15px;
+	height: 55px;
+	width: 55px;
+	border-radius: 45px;
+	border: 3px solid #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.active-circle {
+	height: 10px;
+	width: 10px;
+	border-radius: 10px;
+	margin-right: 5px;
+	display: inline-block;
+}

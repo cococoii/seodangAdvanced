@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="kitList" extends="main">
+    	<put-attribute name="title" value="키트목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/kit/kitList.jsp"/>
+    </definition>
+    <definition name="kitWrite" extends="main">
+    	<put-attribute name="title" value="키트등록하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/kit/kitWrite.jsp"/>
+    </definition>
+    <definition name="kitDetail" extends="main">
+    	<put-attribute name="title" value="키트detail"/>
+    	<put-attribute name="body" value="/WEB-INF/views/kit/kitDetail.jsp"/>
+    </definition>
+    <definition name="kitUpdate" extends="main">
+    	<put-attribute name="title" value="키트수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/kit/kitUpdate.jsp"/>
+    </definition>
+    <definition name="kitDelete" extends="main">
+    	<put-attribute name="title" value="키트detail"/>
+    	<put-attribute name="body" value="/WEB-INF/views/kit/kitDelete.jsp"/>
+    </definition>
+</tiles-definitions>
+
+

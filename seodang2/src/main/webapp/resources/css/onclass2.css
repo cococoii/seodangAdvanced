@@ -1,0 +1,626 @@
+@CHARSET "UTF-8";
+body, th, td, input, select, textarea, button { font-size: 14px; line-height: 1.5; font-family: HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic','맑은 고딕',sans-serif; color: #212121; }
+a:hover {
+	text-decoration:none;
+}
+body {
+        margin: 0;
+      }
+.display-flex.page-header {
+    align-items: center;
+}
+.page-sort {
+    margin-left: auto;
+}
+.page-sort-sep {
+    width: 36px;
+    text-align: center;
+}
+.container-right {
+	width: 1600px;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 1.13em;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-nopadding {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+/*CKEditor 사용시 등록, 수정폼*/
+.ck-editor__editable_inline{
+	min-height:500px;
+}
+/*등록폼 css*/
+form#open_form,form#update_form{
+	width: 1120px;
+}
+input#on_name {
+    width: 500px;
+}
+.on-form-input{
+    padding: 5px 5px 5px 1px;
+    margin: 10px 0 0 100px;
+    width: 200px;
+    border: 0px;
+    border-bottom: 1px #adb5bd solid;	
+}
+.on-form-input-date,.on-form-input-place {
+    padding: 5px 0 5px 1px;
+    width: 120px;
+    border: 0px;
+    border-bottom: 1px #adb5bd solid;
+    margin: 0 17px;
+}
+li hr{
+	border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: #adb5bd;
+    margin: 20px 0;
+}
+.timetable {
+    display: inline-block;
+    text-align: center;
+    border: 1px black solid;
+    margin: 18px 10px 0 0;
+    border-radius: 9px;
+    padding: 0px 21px;
+}
+span.open-title {
+    color: #db3700;
+}
+input#onaddress1 {
+    width: 250px;
+}
+.timetable .time_date, .timetable .time_start{
+    padding: 1px 18px;
+}
+div.time_end{
+	padding: 1px 18px 14px 18px;
+}
+li#content {
+    margin: 22px 0;
+}
+/*목록 css*/
+.item-space {
+    display: flex;
+    flex-wrap: wrap;
+}
+.item-space .horizontal-area {
+   	margin: 10px 10px 27px 10px;
+    padding-left: 28px;
+    width: 22%;
+    height: 385px;
+    float: left;
+    overflow: hidden;
+}
+input.btn.btn-outline-secondary,button.btn.btn-outline-secondary {
+    width: 200px;
+    height: 41px;
+    font-size: 16px;
+}
+.box {
+  position:relative;
+  transition: .5s ease; /* 필수는 아님 */
+ }
+.item-space .horizontal-area .name {
+    font-size: 0.8rem;
+}
+.item-space .horizontal-area .image-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 114%;
+    max-height: 54%;
+    border-radius: 7px;
+}
+a:hover img {
+  transform: scale(1.1);
+  transition: transform .35s;  
+}
+.item-space .horizontal-area .image-container img{
+	min-height: 12rem;;
+    min-width: 15rem;
+    overflow: hidden;
+    object-fit: contain;
+    border-color: #f5f5f5;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+.item-category {
+    width: 20%;
+    background-color: #FF7800;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    margin: 6px 0;
+    padding: 4px 6px;
+    font-size: 16px;
+}
+/*상세 css*/
+img.detail-img {
+    width: 1024px;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+a.schedules {
+    display: block;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding-left: 25px;
+    cursor: pointer;
+}
+.schedule_calendar {
+    position: relative;
+    overflow-x: scroll;
+    border-top: 1px solid #f0f3f8;
+}
+/*상세 ckeditor*/
+.container-head {
+    display: flex;
+    background-color: #fff;
+    position: sticky;
+    top: 78px;
+    align-items: center;
+}
+.modify-delete-btn {
+    margin-left: auto;
+}
+form#detail-shopping {
+    padding: 9px 0;
+    width: 100%;
+}
+input.btn.btn-outline-secondary.shopping {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    background-color: #1B1A17;
+    color: white;
+}
+button#like_btn {
+    border-radius: 7px;
+    height: 47px;
+    font-size: 21px;
+}
+.like {
+    margin-left: auto;
+}
+.detail_content{
+	display:flex;
+	padding-top:20px;
+}
+div.ck_content{
+	padding:0 10px;
+	width: 66.6667%;
+}
+.sidebar {
+	padding:0 10px;
+    width: 33.3333%;
+    display: block;
+}
+.sidbar_content {
+    top: 163px;
+    position: sticky;
+    padding: 20px;
+    box-shadow: rgb(41 42 43 / 25%) 0px 3px 6px -1px;
+}
+.ck_content .image {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align:center;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+img {
+    max-width: 100%;
+}
+.image-style-side {
+    float: right;
+    margin-right: -200px;
+    margin-left: 50px;
+    margin-top: -50px;
+}
+.image.image_resized {
+    display: block;
+    box-sizing: border-box;
+}
+
+.image.image_resized img {
+    width: 100%;
+}
+/*후기 작성*/
+div#main-bodyfooter {
+    position: relative;
+    max-width: 640px;
+    margin: 0px auto;
+}
+.no-result {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    border: 1px solid;
+    border-radius: 6px;
+    vertical-align: middle;
+    padding: 94px;
+}
+div#main_body\ review {
+    background-color: white;
+    min-height: 930px;
+}
+.back-title {
+    display: flex;
+   	padding: 17px 20px;
+}
+.back-title h3 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.back-title .backspace{
+	cursor: pointer;
+}
+.back-title .title {
+    width: 100%;
+    text-align: center;
+}
+.reviewForm .align-center{
+	padding: 48px 0 15px 0;
+}
+form#review_form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+}
+form#review_form ul{
+	padding-inline-start: 0px;
+	padding-inline-end: 0px;
+}
+#review_form label {
+    width: 0;
+    float: none;
+}
+#review_form .starpoint_box{
+	padding: 40px 0;
+    display: inline-block;
+    border: 0; 
+    display: inline-block;
+    direction: rtl;
+    border: 0; 
+}
+.starpoint {
+    padding: 10px 0;
+}
+label.star{
+	width: 0px;
+    float: none;
+	font-size: 1.5rem;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #7B7B7B; 
+}
+#review_form input[type=radio]{
+    display: none;
+}
+li.starpoint_box {
+    display: inline-block;
+    border: 0;
+}
+/* #review_form label:hover{
+    text-shadow: 0 0 0 #a00; 
+} */
+/* #review_form label:hover ~ label{
+    text-shadow: 0 0 0 #a00; 
+} */
+#review_form input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
+}
+img.review_img{
+	max-with:200px;
+	max-height:200px;
+}
+textarea#review_text {
+    padding: 14px 16px;
+    border: 1px solid rgb(239, 239, 239);
+    min-height: 190px;
+    width: 564px;
+   	resize: vertical;
+}
+/*오프라인 클래스 후기 목록*/
+.display-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.average-review.display-flex {
+    justify-content: center;
+    align-items: center;
+}
+.review_list {
+    margin: 0 23px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 18px 0;
+    margin: 17px 0;
+}
+.rating_num {
+    width: 20%;
+    align-items: center;
+}
+.star_rating {
+    width: 80%;
+    text-align: left;
+}
+.star_num{
+	display:flex;
+	align-items: center;
+}
+.star_num .graph {
+    background-color: rgb(239, 239, 239);
+    flex: 1 1 0%;
+    height: 5px;
+    position: relative;
+    border-radius: 8px;
+}
+.graph .graph-5, .graph .graph-4, .graph .graph-3, .graph .graph-2, .graph .graph-1{
+    height: 5px;
+    padding: 0;
+    text-align: center;
+    background-color: #4F98FF;
+    color: #111;
+    border-radius: 5px;
+}
+.score {
+    padding-right: 10px;
+}
+.star {
+    padding-left: 10px;
+}
+.avg_rating {
+    font-size: 40px;
+    padding: 5px 14px;
+    color: #ffb003;
+}
+button.btn.detail-replybtn {
+    font-size: 16px;
+    background-color: #1B1A17;
+    color: white;
+    padding: 8px 18px;
+}
+input.btn.replylist-btn {
+    font-size: 19px;
+    width: 100%;
+    background-color: #cecece8f;
+    padding: 12px;
+    margin: 32px 0;
+}
+.user_image {
+    width: 30px;
+    height: 30px;
+}
+.user_image img {
+    border-radius: 18px;
+}
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: rgb(239, 239, 239);
+}
+ 
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
+.review_start {
+    display: flex;
+}
+.name-rating {
+    margin-left: 13px;
+}
+.review-text {
+    margin: 12px 0px 3px 0px;
+}
+button.sorting::after {
+    content: "  |";
+}
+.sorting-item {
+    padding-bottom:18px;
+}
+/*리뷰 reply*/
+button.btn.reply {
+    padding: 0;
+}
+.display-flex{
+	display:flex;
+}
+.reply , .reply-no{
+    padding-bottom: 20px;
+}
+.reply-complete {
+    padding-top: 6px;
+   	padding-bottom: 20px;
+}
+.reply-text {
+    color: #aaa9a9;
+    padding: 0 5px;
+}
+.reply-btn {
+    align-items: center;
+    font-size: 0.8rem;
+    padding: 0;
+}
+.review {
+    clear: both;
+}
+.balloon{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #F1EEEA;
+    border-radius: 14px;
+    margin-left: 17px;
+    padding: 13px 20px;
+}
+.balloon:after {
+	border-top: 14px solid #F1EEEA;
+    border-left: 22px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -16px;
+}
+.review_list .output-div {
+    margin: 10px 0 20px 0;
+}
+#onre_content,#monre_content{
+	resize: none;
+	background-color: transparent;
+    border: transparent;
+    height: 82px;
+    width:100%;
+}
+.hr{
+	margin-bottom: 20px;
+    border-color: #F1EEEA;
+    background-color: #F1EEEA;
+}
+.re-content {
+    font-size: 15px;
+    padding-top: 6px;
+}
+.re-date {
+    -webkit-text-fill-color: #aaa9a9;
+    font-size: 15px;
+}
+.re-btn {
+    margin-left: auto;
+}
+.re-btn .btn {
+    padding-right: 3px;
+}
+/*팝업창*/
+#popup01{
+	width: 423px;
+    max-height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    z-index: 2;
+    padding: 32px;
+    border-radius: 15px;
+}
+.backon{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.72);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.close{
+	position: absolute;
+    top: 24px;
+    cursor: pointer;
+    right: 24px;
+}
+.popup-text {
+    display: flex;
+    font-size: 17px;
+    color: rgb(26, 26, 26);
+    line-height: 18px;
+    letter-spacing: -0.14px;
+    font-weight: bold;
+    padding: 8px 0px;
+    cursor: pointer;
+    margin: 8px 0px;
+}
+#delete-reply:hover {
+    color: #999999;
+}
+/*목록 review List 보여주기*/
+.reviewList {
+    display: flex;
+    flex-flow: row wrap;
+}
+.review.width-50 {
+    width: 46%;
+    min-height: 127px;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+}
+.writer-reply {
+    margin-top: auto;
+}
+/*지도 주소 안보이게*/
+span#onaddress1, span#onaddress2,span#onzipcode {
+    display: none;
+}
+.map-title{
+	width: 150px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+[class^='img-'] img {
+    width: 100%;
+    height: 100%;
+    border: 10px solid #fff;
+    object-fit: cover;
+}

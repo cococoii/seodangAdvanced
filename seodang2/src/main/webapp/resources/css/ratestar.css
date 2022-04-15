@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+.rate-textarea {
+		width: 750px;
+		height: 200px;
+		padding: 10px;
+		box-sizing: border-box;
+		border: solid 2px #f2c200;
+		border-radius: 5px;
+		font-size: 16px;
+		resize: both;
+}
+.rate-textarea-modal{
+		width: 400px;
+		height: 100px;
+		padding: 10px;
+		box-sizing: border-box;
+		border: solid 2px #f2c200;
+		border-radius: 5px;
+		font-size: 16px;
+		resize: both;
+}
+
+.ratingStar_btn{
+		float:right;
+		margin-right:220px;
+}
+.ratingStar_btn-modal{
+		float:right;
+		margin-right:560px;	
+}
+/* 별점 두번째 */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+.outer{
+	text-align: center;
+	margin-top:10px;
+}
+.inner{
+	border: 3px solid; 
+	width:500px;
+	height:280px; 
+	display: inline-block;
+	border-radius: 0px 0px 30px 0px;
+	overflow:hidden; 
+	word-wrap:break-word;
+	text-align:left;
+}
+
+.outer2{
+	text-align: center;
+	margin-top:10px;
+}
+.inner2{
+	border: 3px solid; 
+	width:800px;
+	height:500px; 
+	display: inline-block;
+	border-radius: 0px 0px 30px 0px;
+	overflow:hidden; 
+	word-wrap:break-word;
+	text-align:center;
+}
+
+
+/* 별점 세번째 */
+.star-rating2 {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating2 input {
+  display: none;
+}
+ 
+.star-rating2 label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating2 :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating2 label:hover,
+.star-rating2 label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+
+
+
+/* 댓글 */
+div#reply_div {
+	margin-top: 1px;
+	background-color:#fff;
+}
+
+form#re_form {
+	width: 400px;
+	border: none;
+}
+
+span.re-title {
+	color: #000;
+	font-size: 12pt;
+	line-height: 200%;
+}
+
+span.letter-count {
+	font-size: 10pt;
+	color: #999;
+}
+
+textarea.rep-content {
+	width: 50%;
+	height: 50px;
+	margin: 10px 10px;
+	text-align:left;
+}
+
+div#re_first, div#mre_first {
+	float: left;
+	width: 70%;
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+
+div#re_second, div#mre_second {
+	float: left;
+	width: 19%;
+	margin-bottom: 10px;
+}
+
+div#loadding {
+	width: 100px;
+	height: 50px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transfrom: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+div.paging-button {
+	text-align: right;
+}
+
+div#output {
+	clear: both;
+}
+
+form#mre_form {
+	border: none;
+	margin: 5px;
+}
+
+/* 말풍선 */
+.bubble
+{
+position: relative;
+width: 260px;
+height: 80px;
+padding: 0px;
+background: #d3d3d3;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding-top:10px;
+padding-left:20px;
+font-weight: 900 ;
+border: solid 2px #000;
+}
+

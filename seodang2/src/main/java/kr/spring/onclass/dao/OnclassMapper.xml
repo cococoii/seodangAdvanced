@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.onclass.dao.OnclassMapper"> 
+	<select id="selectList" parameterType="map" resultType="onclassVO">
+	   SELECT
+		*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT 
+					 b.on_num,
+		               <![CDATA[
+		               REPLACE(REPLACE(b.on_name,'<','&lt;'),'>','&gt;') on_name,
+		               ]]>
+		               b.reg_date,
+		               m.name,
+		               b.on_content,
+		               m.user_num,
+		               b.on_price,
+		               b.hit,
+		               b.mimage,
+		               b.category_num,
+		               NVL(l.like_sum,0) like_sum,
+					   NVL(r.rating,0.0) rating	
+				 FROM onclass b
+				 JOIN ouser_detail m 
+				 ON b.user_num = m.user_num
+				 LEFT OUTER JOIN (SELECT COUNT(*) like_sum,on_num FROM onlike GROUP BY on_num) l
+				ON b.on_num = l.on_num
+				LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,on_num FROM onstar GROUP BY on_num) r
+				ON b.on_num=r.on_num
+				<where>
+						<if test="keyword!= null and keyword!=''">
+						    m.name LIKE '%' || #{keyword} || '%' or
+							b.on_name LIKE '%' || #{keyword} || '%'
+						</if>
+					</where>
+		            <if test="sort == 0">
+		            ORDER BY b.on_num DESC)a)
+		            </if>
+		            <if test="sort == 1">
+		            ORDER BY like_sum DESC,on_num DESC)a)
+		            </if>
+		            <if test="sort == 2">
+		            ORDER BY rating DESC,on_num DESC)a)
+		            </if>
+		           <![CDATA[
+				   WHERE rnum >= #{start} AND rnum <= #{end}
+				   ]]>
+			       <if test="category_num == 1">
+			       AND category_num=1
+			       </if>
+			       <if test="category_num == 2">
+			       AND category_num=2
+			       </if>  
+			       <if test="category_num == 3">
+			       AND category_num=3
+			       </if>
+			       <if test="category_num == 4">
+			       AND category_num=4
+			       </if>         
+			       <if test="category_num == 5">
+			       AND category_num=5
+			       </if>
+				 <!-- <if test="sort == 0">
+				 ORDER BY b.on_num DESC)a)
+				 </if>
+				 <if test="sort == 1">
+				 ORDER BY like_sum DESC,on_num DESC)a)
+				 </if>
+				 <if test="sort == 2">
+				 ORDER BY rating DESC,on_num DESC)a)
+				 </if>
+		<![CDATA[
+			WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+				 <if test="category_num == 1">
+			      AND category_num=1
+			      </if>
+			      <if test="category_num == 2">
+			      AND category_num=2
+			      </if>  
+			      <if test="category_num == 3">
+			      AND category_num=3
+			      </if>
+			      <if test="category_num == 4">
+			      AND category_num=4
+			      </if>         
+			      <if test="category_num == 5">
+			      AND category_num=5
+			      </if> -->
+	</select>
+	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM onclass b
+		JOIN ouser m
+		ON b.user_num = m.user_num
+		<where>
+       	   <if test="category_num == 1">
+	       AND category_num=1
+	       </if>
+	       <if test="category_num == 2">
+	       AND category_num=2
+	       </if>  
+	       <if test="category_num == 3">
+	       AND category_num=3
+	       </if>
+	       <if test="category_num == 4">
+	       AND category_num=4
+	       </if>         
+	       <if test="category_num == 5">
+	       AND category_num=5
+	       </if>
+        </where>
+	</select>
+	<update id="updateOnclass" parameterType="onclassVO">
+		UPDATE onclass SET
+		  category_num=#{category_num},
+		  on_name=#{on_name},
+		  on_price=#{on_price},
+		  on_content=#{on_content},
+		  mimage=#{mimage},
+		  modify_date=SYSDATE
+	   WHERE on_num=#{on_num}
+	</update>
+    
+    <!-- 파일 다중 업로드 -->
+    <insert id="uploadFile" parameterType="HashMap">
+    insert into uploadfile (file_num,o_name,file_name,file_size,on_num)
+	values (uploadFile_seq.nextval, #{originalfileName}, #{saveFileName}, #{fileSize}, #{on_num})
+	</insert>
+	
+	<!-- 후기 목록 카운트 -->
+	<select id="selectRowReviewCount" parameterType="map" resultType="integer">
+	SELECT COUNT(*)
+			FROM onstar
+			WHERE on_num=#{on_num}
+			<if test="rating==1">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==2">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==3">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==4">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==5">
+			AND rating =#{rating}
+			</if>
+	</select>
+	<select id="selectListOnReview" parameterType="map" resultType="onstarVO">
+		SELECT *
+		FROM onstar s
+		JOIN ouser_detail d
+		ON s.user_num = d.user_num
+		LEFT OUTER JOIN 
+		(
+		SELECT onre_num,onstar_num,d.user_num AS writer_num,name AS writer_name,
+		onre_content,onre_date,photo_name as writer_photo
+		FROM onstar_reply r
+		JOIN ouser_detail d
+		ON r.user_num = d.user_num
+		) r
+		ON s.onstar_num = r.onstar_num
+		WHERE on_num=#{on_num}
+		<if test="rownum!=null">
+		<![CDATA[
+		AND ROWNUM<=#{rownum}
+		]]>
+		</if>
+		<if test="sort == 0">
+        ORDER BY s.onstar_num DESC
+        </if>
+        <if test="sort == 1">
+        ORDER BY s.rating DESC,s.onstar_num DESC
+        </if>
+        <if test="sort == 2">
+        ORDER BY s.rating,s.onstar_num DESC
+        </if>
+	</select>
+</mapper>
+
+
+
+
+
+
+

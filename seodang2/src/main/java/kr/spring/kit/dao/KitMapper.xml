@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.kit.dao.KitMapper"> 
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map" resultType="kitVO">
+		SELECT
+		*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT 
+					k.kit_num,
+					<![CDATA[
+					REPLACE(REPLACE(k.kit_name, '<', '&lt;'),'>','&gt;') kit_name,
+					]]>
+					k.kit_price,
+					k.kit_quantity,
+					k.reg_date,
+					k.hit,
+					k.kit_content,
+					k.kit_content2,
+					k.mimage				
+				 FROM okit k 
+				 JOIN ouser	u 
+				 ON k.user_num = u.user_num
+				 	<where>
+			 			<if test="keyword!='' and keyfield==1">	
+			 				k.kit_name LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==2">
+			 				k.kit_content LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==3">
+			 				k.kit_content2 LIKE '%' || #{keyword} || '%'
+			 			</if>
+			 			<if test="keyword!='' and keyfield==0">
+						    k.kit_name LIKE '%' || #{keyword} || '%' or
+						    k.kit_content LIKE '%' || #{keyword} || '%' or
+							k.kit_content2 LIKE '%' || #{keyword} || '%'
+						</if>
+			 		</where>
+				 ORDER BY k.kit_num DESC)a)
+		 	 
+		<![CDATA[
+			WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+
+	<!-- 글 목록 -->
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM okit k 
+		JOIN ouser u 
+		ON k.user_num = u.user_num	
+		 <where>
+ 			<if test="keyword!='' and keyfield==1">	
+ 				k.kit_name LIKE '%' || #{keyword} || '%'
+ 			</if>
+ 			<if test="keyword!='' and keyfield==2">
+				k.kit_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield==3">
+				k.kit_content2 LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield==0">
+			    k.kit_name LIKE '%' || #{keyword} || '%' or
+			    k.kit_content LIKE '%' || #{keyword} || '%' or
+				k.kit_content2 LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>	
+		
+</select>
+	
+	
+	<!-- 글 수정 -->
+	<update id="updateKit" parameterType="kitVO" >
+		UPDATE okit SET
+			<if test="filename != ''">
+				uploadfile=#{uploadfile},
+				filename=#{filename},
+			</if>
+			kit_name=#{kit_name},
+			kit_content=#{kit_content},
+			kit_content2=#{kit_content2},
+			kit_price=#{kit_price},
+			kit_quantity=#{kit_quantity},
+			modify_date=SYSDATE
+		WHERE kit_num=#{kit_num}	
+	</update>
+	
+	<!-- 파일 다중 업로드 -->
+    <insert id="uploadfilekit" parameterType="HashMap">
+    insert into uploadfilekit (file_num,o_name,file_name,file_size,kit_num)
+	values (uploadFilekit_seq.nextval, #{originalfileName}, #{saveFileName}, #{fileSize}, #{kit_num})
+	</insert>
+	
+	
+</mapper>

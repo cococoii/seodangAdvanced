@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
+/*write
+
+*/
+li{
+	margin-bottom:50px;
+}
+li#name,#price,#quantity,#content2,#content{
+	text-align: center;
+}
+h2{
+	font-family: 'Jeju Gothic', sans-serif;
+}
+ul#box5{
+    font-family: 'Jeju Gothic', sans-serif;
+	font-size: 130%;	
+	position: relative;
+    top:80px;   
+}
+ul#box4{
+	font-family: 'Jeju Gothic', sans-serif;
+	font-size: 120%;
+	
+}
+input#kit_name{
+	width: 400px;
+	height:40px;
+}
+input[type=number]{
+	width: 400px;
+	height:40px;
+}
+input[type=text]{
+	width: 400px;
+	height:40px;	
+}
+input[type="button"],[type="submit"]{
+	font-family: 'Jeju Gothic', sans-serif;
+	width: 100px;
+	height:40px;
+	border: 2px solid #c0c0c0;
+	border-radius:5px;
+	font-size: 100%;
+}
+input#file-upload-button{
+	font-family: 'Jeju Gothic', sans-serif;
+	width: 100px;
+	height:40px;
+	border: 2px solid #c0c0c0;
+	border-radius:5px;
+	font-size: 100%;
+}
+input#upload{
+	font-family: 'Jeju Gothic', sans-serif;
+}
+.kitwrite{
+	
+}
+input#kit_name,#kit_price,#kit_quantity,#kit_content2{
+	border: 2px solid #c0c0c0;
+	border-radius:5px; 
+}
+
+
+

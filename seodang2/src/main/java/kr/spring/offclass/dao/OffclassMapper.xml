@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.offclass.dao.OffclassMapper"> 
+	<insert id="insertListOffTime" parameterType="offTimetableVO">
+		INSERT INTO off_timetable(
+							time_num,
+							off_num,
+							time_date,
+							time_start,
+							time_end,
+							off_limit)
+							SELECT off_timetable_seq.nextval, A.*
+							FROM
+						(
+						<foreach collection="list" item="item" index="index" separator="UNION ALL">
+							SELECT
+							#{item.off_num} AS off_num,
+							#{item.time_date} AS time_date,
+							#{item.time_start} AS time_start,
+							#{item.time_end} AS time_end,
+							#{item.off_limit} AS off_limit
+							FROM DUAL
+						</foreach>
+						) A
+	</insert>
+	<insert id="insertOffClass" parameterType="offclassVO">
+	INSERT INTO offclass (off_num,
+						category_num,
+						off_name,
+						off_limit,
+						off_price,
+						off_content,
+						off_filename,
+						off_uploadfile,
+						user_num,
+						offzipcode,
+						offaddress1,
+						offaddress2,
+						mimage
+						) 
+						VALUES 
+						(
+						#{off_num},
+						#{category_num},
+						#{off_name},
+						#{off_limit},
+						#{off_price},
+						#{off_content},
+						#{off_filename},
+						#{off_uploadfile},
+						#{user_num},
+						#{offzipcode},
+						#{offaddress1},
+						#{offaddress2},
+						#{mimage}
+						)
+	</insert>
+	<select id="selectListOffClass" parameterType="map" resultType="offclassVO">
+	SELECT
+		  *
+		FROM (SELECT 
+		       a.*,
+		       rownum rnum
+		      FROM (SELECT 
+		               <![CDATA[
+		               REPLACE(REPLACE(o.off_name,'<','&lt;'),'>','&gt;') off_name,
+		               ]]>
+		               o.off_price,
+		               o.category_num,
+		               d.name,
+		               o.off_filename,
+		               o.off_num,
+		               NVL(l.like_sum,0) like_sum,
+                       NVL(r.rating,0.0) rating
+		            FROM offclass o
+		            JOIN ouser_detail d
+		            ON o.user_num = d.user_num
+                    LEFT OUTER JOIN (SELECT COUNT(*) like_sum,off_num FROM offlike GROUP BY off_num) l
+                    ON o.off_num = l.off_num
+                    LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,off_num FROM offstar GROUP BY off_num) r
+                    ON o.off_num=r.off_num
+                    <where>
+						<if test="keyword!= null and keyword!=''">
+						    d.name LIKE '%' || #{keyword} || '%' or
+							o.off_name LIKE '%' || #{keyword} || '%'
+						</if>
+					</where>
+		            <if test="sort == 0">
+		            ORDER BY o.off_num DESC)a)
+		            </if>
+		            <if test="sort == 1">
+		            ORDER BY like_sum DESC,off_num DESC)a)
+		            </if>
+		            <if test="sort == 2">
+		            ORDER BY rating DESC,off_num DESC)a)
+		            </if>
+		            
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   ]]>
+       <if test="category_num == 1">
+       AND category_num=1
+       </if>
+       <if test="category_num == 2">
+       AND category_num=2
+       </if>  
+       <if test="category_num == 3">
+       AND category_num=3
+       </if>
+       <if test="category_num == 4">
+       AND category_num=4
+       </if>         
+       <if test="category_num == 5">
+       AND category_num=5
+       </if>
+	</select>
+	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+	SELECT
+		COUNT(*)
+	FROM offclass o
+	JOIN ouser_detail d
+	ON o.user_num = d.user_num
+	<where>
+		<if test="keyword!= null and keyword!=''">
+		    d.name LIKE '%' || #{keyword} || '%' or
+			o.off_name LIKE '%' || #{keyword} || '%'
+		</if>
+	   <if test="category_num == 1">
+       AND category_num=1
+       </if>
+       <if test="category_num == 2">
+       AND category_num=2
+       </if>  
+       <if test="category_num == 3">
+       AND category_num=3
+       </if>
+       <if test="category_num == 4">
+       AND category_num=4
+       </if>         
+       <if test="category_num == 5">
+       AND category_num=5
+       </if>
+	</where>
+	</select>
+	
+	<select id="selectListOffTimetable" parameterType="map" resultType="offTimetableVO">
+	SELECT 
+		* 
+		FROM off_timetable 
+		WHERE off_num=#{off_num} 
+		AND 
+		CONCAT(TO_CHAR(time_date,'YY/MM/DD '),time_start) >=TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI')
+		<if test="time_date!=null">
+		AND time_date=#{time_date}
+		</if>
+		ORDER BY CONCAT(TO_CHAR(time_date,'YY/MM/DD '),time_start)
+	</select>
+	
+	<update id="updateOffClass" parameterType="offclassVO">
+	UPDATE offclass 
+		SET 
+		category_num=#{category_num},
+		off_name=#{off_name},
+		off_price=#{off_price},
+		off_content=#{off_content},
+		offzipcode=#{offzipcode},
+		offaddress1=#{offaddress1},
+		offaddress2=#{offaddress2}
+		<if test="off_filename!=''">
+		,off_filename=#{off_filename},off_uploadfile=#{off_uploadfile}
+		</if>
+		 WHERE off_num=#{off_num}
+	</update>
+	<select id="selectListOffReview" parameterType="map" resultType="offstarVO">
+	SELECT *
+		FROM offstar s
+		JOIN ouser_detail d
+		ON s.user_num = d.user_num
+        LEFT OUTER JOIN 
+        (
+        SELECT offre_num,offstar_num,d.user_num AS writer_num,name AS writer_name,offre_content,offre_date,photo_name as writer_photo
+        FROM offstar_reply r
+        JOIN ouser_detail d
+        ON r.user_num = d.user_num
+        ) r
+        ON s.offstar_num = r.offstar_num
+		WHERE off_num=#{off_num}
+		<if test="rownum!=null">
+		<![CDATA[
+		AND ROWNUM<=#{rownum}
+		]]>
+		</if>
+		<if test="sort == 0">
+        ORDER BY s.offstar_num DESC
+        </if>
+        <if test="sort == 1">
+        ORDER BY s.rating DESC,s.offstar_num DESC
+        </if>
+        <if test="sort == 2">
+        ORDER BY s.rating,s.offstar_num DESC
+        </if>
+	</select>
+	<select id="selectRowReviewCount" parameterType="map" resultType="integer">
+	SELECT COUNT(*)
+			FROM offstar
+			WHERE off_num=#{off_num}
+			<if test="rating==1">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==2">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==3">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==4">
+			AND rating =#{rating}
+			</if>
+			<if test="rating==5">
+			AND rating =#{rating}
+			</if>
+	</select>
+	
+	<!-- 파일 다중 업로드 -->
+    <insert id="uploadfileoff" parameterType="HashMap">
+    insert into uploadfileoff (file_num,o_name,file_name,file_size,off_num)
+	values (uploadfileoff_seq.nextval, #{originalfileName}, #{saveFileName}, #{fileSize}, #{off_num})
+	</insert>
+</mapper>
+
+
+
+
+
+
+

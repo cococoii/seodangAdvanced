@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="userRegister" extends="main">
+    	<put-attribute name="title" value="회원가입"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userRegister.jsp"/>
+    </definition>
+    <definition name="userLogin" extends="main">
+    	<put-attribute name="title" value="로그인"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userLogin.jsp"/>
+    </definition>
+    <definition name="userMenu" extends="main">
+    	<put-attribute name="title" value="회원메뉴"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userMenu.jsp"/>
+    </definition>
+    <definition name="userView" extends="main">
+    	<put-attribute name="title" value="회원상세정보"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userView.jsp"/>
+    </definition>
+    <definition name="userModify" extends="main">
+    	<put-attribute name="title" value="회원정보수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userModify.jsp"/>
+    </definition>
+    <definition name="userChangePassword" extends="main">
+    	<put-attribute name="title" value="회원정보수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userChangePassword.jsp"/>
+    </definition>
+    <definition name="userDelete" extends="main">
+    	<put-attribute name="title" value="회원탈퇴"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userDelete.jsp"/>
+    </definition>
+    <definition name="admin_userList" extends="main">
+    	<put-attribute name="title" value="회원목록(관리자용)"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/admin_userList.jsp"/>
+    </definition>
+    <definition name="admin_userModify" extends="main">
+    	<put-attribute name="title" value="회원목록(관리자용)"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/admin_userModify.jsp"/>
+    </definition>
+	<definition name="myoqnaList" extends="main">
+    	<put-attribute name="title" value="전체 qna 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/myoqnaList.jsp"/>
+    </definition>   
+	<definition name="myqnaList" extends="main">
+    	<put-attribute name="title" value="myqna목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/myqnaList.jsp"/>
+    </definition>
+    <definition name="onqnaList" extends="main">
+    	<put-attribute name="title" value="onqna목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onqna/onqnaList.jsp"/>
+    </definition>
+    <definition name="onqnaWrite" extends="main">
+    	<put-attribute name="title" value="onqna글쓰기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onqna/onqnaWrite.jsp"/>
+    </definition>
+    
+    <definition name="total_search" extends="main">
+    	<put-attribute name="title" value="통합검색"/>
+    	<put-attribute name="body" value="/WEB-INF/views/search/searchList.jsp"/>
+    </definition>
+</tiles-definitions>
+
+ 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+
+    <definition name="cartList" extends="main">
+    	<put-attribute name="title" value="장바구니"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/cartList.jsp"/>
+    </definition>
+    
+    <definition name="orderForm" extends="main">
+    	<put-attribute name="title" value="주문Form"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/orderForm.jsp"/>
+    </definition>
+    
+    <definition name="orderList" extends="main">
+    	<put-attribute name="title" value="주문내역"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/orderList.jsp"/>
+    </definition>
+    
+    <definition name="orderDetail" extends="main">
+    	<put-attribute name="title" value="주문내역 상세"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/orderDetail.jsp"/>
+    </definition>
+
+    <definition name="adminOrderList" extends="main">
+    	<put-attribute name="title" value="전체 주문목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/adminOrderList.jsp"/>
+    </definition>
+    
+    
+    <definition name="orderDetailByAdmin" extends="main">
+    	<put-attribute name="title" value="전체 주문목록 상세"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cart/adminOrderList.jsp"/>
+    </definition>    
+
+</tiles-definitions>      

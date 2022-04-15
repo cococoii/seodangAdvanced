@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.myclass.dao.MyclassMapper"> 
+	<select id="selectList" parameterType="map" resultType="MyclassVO">
+		SELECT * FROM (SELECT a.*,rownum rnum FROM (
+		SELECT on_num,category_num,on_content,on_name,on_price,user_num,onoff,mimage FROM onclass where user_num = #{user_num}
+		UNION all
+		SELECT off_num,category_num,off_content,off_name,off_price,user_num,onoff,mimage FROM offclass where user_num = #{user_num} order by on_num
+		)a)		
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   ]]>	
+	</select>
+	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT count(*) FROM (SELECT a.*,rownum rnum FROM (
+		SELECT on_num,category_num,on_content,on_name,on_price,user_num,onoff FROM onclass where user_num = #{user_num}	 																					
+		UNION all	
+		SELECT off_num,category_num,off_content,off_name,off_price,user_num,onoff FROM offclass where user_num = #{user_num}	 
+		)a) 
+	</select> 
+
+	<select id="selectRegisterList" parameterType="map" resultType="paymentVO">
+		SELECT * FROM (SELECT a.*,rownum rnum
+		FROM (SELECT b.onreg_num,c.on_num,b.on_regdate,b.on_moregdate,c.on_status
+		FROM onreg b JOIN onreg_detail c on b.onreg_num = c.onreg_num
+		where b.user_num = #{user_num}
+		ORDER BY b.onreg_num DESC)a) 
+		<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
+	</select>
+	
+	<select id="selectRowCount2" parameterType="map" resultType="integer">
+		    SELECT count(*) FROM (SELECT a.*,rownum rnum FROM (
+			SELECT *
+			FROM onreg b
+			JOIN onreg_detail c on b.onreg_num = c.onreg_num
+			where b.user_num = #{user_num}
+			)a)
+	</select>
+	
+	<!-- 좋아요한 목록 -->
+	<select id="selectLikeList" parameterType="map" resultType="OnlikeVO">
+		<!-- SELECT * FROM (SELECT a.*,rownum rnum FROM (
+		SELECT z.on_num,n.onlike_num,n.user_num,z.on_name,z.on_price,z.onoff
+		FROM onlike n join onclass z on n.on_num = z.on_num where n.user_num = #{user_num}
+		UNION all
+		SELECT t.off_num,r.offlike_num,r.user_num,t.off_name,t.off_price,t.onoff
+		FROM offlike r join offclass t on r.off_num = t.off_num where r.user_num = #{user_num}
+		order by on_num)a) -->
+		SELECT * FROM (SELECT a.*,rownum rnum FROM (
+		SELECT z.on_num,n.onlike_num,n.user_num,z.on_name,z.on_price,z.onoff,z.mimage,z.category_num
+		FROM onlike n join onclass z on n.on_num = z.on_num where n.user_num = #{user_num}
+		UNION all
+		SELECT t.off_num,r.offlike_num,r.user_num,t.off_name,t.off_price,t.onoff,t.mimage,t.category_num
+		FROM offlike r join offclass t on r.off_num = t.off_num where r.user_num = #{user_num}
+		UNION all
+		SELECT b.kit_num,a.kitlike_num,a.user_num,b.kit_name,b.kit_price,b.onoff,b.mimage,7
+		FROM okitlike a join okit b on a.kit_num = b.kit_num where a.user_num = #{user_num}
+		)a)
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   ]]>
+	</select>
+	<select id="selectRowCount3" parameterType="map" resultType="integer">
+		    SELECT count(*) FROM (SELECT a.*,rownum rnum FROM (
+			SELECT z.on_num,n.onlike_num,n.user_num,z.on_name,z.on_price
+			FROM onlike n join onclass z on n.on_num = z.on_num where n.user_num = #{user_num}
+			UNION all
+			SELECT t.off_num,r.offlike_num,r.user_num,t.off_name,t.off_price
+			FROM offlike r join offclass t on r.off_num = t.off_num where r.user_num = #{user_num} 
+			)a)
+	</select>
+	<!-- 구매한 학생들 정보  -->
+	<select id="buyerSelectList" parameterType="map" resultType="paymentVO">
+		<!-- SELECT * FROM (SELECT a.*,rownum rnum
+		FROM (SELECT 
+		o.id,r.on_regdate,r.onreg_num,z.on_num,z.off_num,o.user_num,z.on_status,r.on_moregdate
+		from ouser o join onreg r on o.user_num = r.user_num 
+		join onreg_detail z on r.onreg_num = z.onreg_num
+		where z.on_num = #{on_num}
+		ORDER BY r.onreg_num DESC)a) -->
+		SELECT * FROM (SELECT a.*,rownum rnum
+		FROM (
+		SELECT o.id,r.on_regdate,r.onreg_num,z.on_num,o.user_num,z.on_status,r.on_moregdate
+		from ouser o join onreg r on o.user_num = r.user_num 
+		join onreg_detail z on r.onreg_num = z.onreg_num
+		UNION all
+		SELECT o.id,r.on_regdate,r.onreg_num,z.off_num ,o.user_num,z.on_status,r.on_moregdate
+		from ouser o join onreg r on o.user_num = r.user_num 
+		join onreg_detail z on r.onreg_num = z.onreg_num
+		)a) where on_num = #{on_num}
+	</select>
+	<!-- 구매한 학생 카운트 -->
+	<select id="buySelectRowCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*)
+		from ouser o join onreg r on o.user_num = r.user_num
+		join onreg_detail z on r.onreg_num = z.onreg_num
+		where z.on_num = #{on_num}
+	</select>
+	
+</mapper>

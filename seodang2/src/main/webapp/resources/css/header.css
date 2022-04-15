@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header {
+  font-family: 'Cafe24Ssurround';
+  transform: skew(-0.1deg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height:100px;
+  padding: 1rem;
+  color: #daeefa;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:linear-gradient( #daeefa 80%,#A9D0F5 20%);
+}
+div.mainpage{
+	font-family: 'Cafe24Ssurround';
+	transform: skew(-0.1deg);
+	width: 1024px;
+	height: 50px;
+	background:none;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 1.13em;
+	text-align:center;
+	padding: 8px 0px 0px 0;
+}
+
+
+.flexdisplay {
+	display: flex;
+}
+
+.logo {
+	padding: 8px 10px 8px 0;
+	font-size: 1.5em;
+}
+.logo1 {
+	padding: 8px 10px 8px 0;
+	font-size: 1.2em;
+}
+div.menu.clearfix{
+	font-size: 1.3em;
+}
+div.menu.clearfix2{
+	font-size: 1em;
+
+}
+.menu-item {
+	display: inline-flex;
+	/* 수직으로 가운데 정렬은 안쪽 여백을 둔다 */
+	padding: 8px 10px;
+	font-weight: bold;
+}
+
+.login.align-right {
+	flex: 1;
+	font-size: 1.2em;
+}
+div#main {
+	width: 1024px;
+	margin: 0 auto;
+	font-size: 10pt;
+	font-family: "맑은 고딕";
+}
+
+div#main_header {
+	position: sticky;
+    top: 0px;
+	margin-bottom: 10px;
+	padding: 0 10px 0 0;
+}

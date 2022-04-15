@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="three" extends="main">
+    	<put-attribute name="title" value="게시판 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp"/>
+    </definition>
+    <definition name="onclassList" extends="main_left">
+    	<put-attribute name="title" value="수업 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassList.jsp"/>
+    </definition>
+    <definition name="onclassInsert" extends="main">
+    	<put-attribute name="title" value="수업 등록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassInsert.jsp"/>
+    </definition>
+    <definition name="onclassModify" extends="main">
+    	<put-attribute name="title" value="수업 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassModify.jsp"/>
+    </definition>
+    <definition name="onclassDelete" extends="main">
+    	<put-attribute name="title" value="삭제비밀번호확인"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassDelete.jsp"/>
+    </definition>
+    <definition name="onclassDetail" extends="main">
+    	<put-attribute name="title" value="상세정보"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassDetail.jsp"/>
+    </definition>
+    <definition name="qnaList" extends="main">
+    	<put-attribute name="title" value="상세정보"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/qnaList.jsp"/>
+    </definition>
+    <definition name="ratingWrite" extends="main">
+    	<put-attribute name="title" value="상세정보"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/ratingWrite.jsp"/>
+    </definition>
+    
+    <!-- ///////////////////// -->
+    
+     <definition name="onclassReview" template="/WEB-INF/views/template/layout_noheader.jsp">
+    	<put-attribute name="title" value="오프라인 클래스 후기 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassReview.jsp"/>
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer_noheader.jsp"/>
+    </definition>
+    <definition name="onclassReviewList" template="/WEB-INF/views/template/layout_noheader.jsp">
+    	<put-attribute name="title" value="오프라인 클래스 후기 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassReviewList.jsp"/>
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer_noheader.jsp"/>
+    </definition>
+    <definition name="onclassReviewUpdate" template="/WEB-INF/views/template/layout_noheader.jsp">
+    	<put-attribute name="title" value="오프라인 클래스 후기 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/onclass/onclassReviewUpdate.jsp"/>
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer_noheader.jsp"/>
+    </definition>
+    
+</tiles-definitions>
+
+

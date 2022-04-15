@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="myclassMain" extends="main">
+    	<put-attribute name="title" value="구매 메인"/>
+    	<put-attribute name="body" value="/WEB-INF/views/myclass/myclassMain.jsp"/>
+    </definition>   
+    <definition name="myclassList" extends="main">
+    	<put-attribute name="title" value="올린 강의 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/myclass/myclassList.jsp"/>
+    </definition>
+    <definition name="myclassData" extends="main">
+    	<put-attribute name="title" value="신청한 수강생 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/myclass/myclassData.jsp"/>
+    </definition>  
+    <definition name="myRegisterList" extends="main">
+    	<put-attribute name="title" value="게시판 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/myclass/myRegisterList.jsp"/>
+    </definition>
+    <definition name="likeList" extends="main">
+    	<put-attribute name="title" value="좋아요 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/myclass/likeList.jsp"/>
+    </definition>   
+</tiles-definitions>
+
+

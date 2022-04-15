@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.main.dao.MainMapper">
+<select id="selectList" parameterType="map" resultType="onclassVO">
+			SELECT * FROM (SELECT a.*,rownum rnum FROM (
+			SELECT on_num,category_num,on_content,on_name,on_price FROM onclass
+			UNION
+			SELECT off_num,category_num,off_content,off_name,off_price FROM offclass
+			)a)
+		   <![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
+	  		            
+	</select>
+<select id="selectRowCount" parameterType="map" resultType="integer">
+SELECT COUNT(*) FROM(
+    (SELECT 
+        o.onoff,
+            o.off_name,
+           o.off_price,
+           o.category_num,
+           d.name,
+           o.mimage,
+           o.off_num,
+           NVL(l.like_sum,0) like_sum,
+           NVL(r.rating*20,0.0) rating,
+        	NVL(r.rating*20,0.0) rating_percent	
+        FROM offclass o
+        JOIN ouser_detail d
+        ON o.user_num = d.user_num
+        LEFT OUTER JOIN (SELECT COUNT(*) like_sum,off_num FROM offlike GROUP BY off_num) l
+        ON o.off_num = l.off_num
+        LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,off_num FROM offstar GROUP BY off_num) r
+        ON o.off_num=r.off_num
+        )
+
+UNION ALL
+(SELECT 
+        o.onoff,
+		o.on_name,
+        o.on_price,
+        o.category_num,
+        d.name,
+        o.mimage,
+        o.on_num,
+        NVL(l.like_sum,0) like_sum,
+        NVL(r.rating,0.0) rating,
+        NVL(r.rating*20,0.0) rating_percent	
+		FROM onclass o
+		JOIN ouser_detail d
+		ON o.user_num = d.user_num
+		LEFT OUTER JOIN (SELECT COUNT(*) like_sum,on_num FROM onlike GROUP BY on_num) l
+        ON o.on_num = l.on_num
+        LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,on_num FROM onstar GROUP BY on_num) r
+        ON o.on_num=r.on_num
+	 	)
+)
+</select>
+<select id="selectListRank" parameterType="map" resultType="onclassVO">
+SELECT * FROM (SELECT a.*,rownum rnum FROM (SELECT * FROM
+((SELECT 
+        o.onoff,
+		o.on_name,
+        o.on_price,
+        o.category_num,
+        d.name,
+        o.mimage,
+        o.on_num,
+        NVL(l.like_sum,0) like_sum,
+        NVL(r.rating,0.0) rating,
+        NVL(r.rating*20,0.0) rating_percent
+		FROM onclass o
+		JOIN ouser_detail d
+		ON o.user_num = d.user_num
+		LEFT OUTER JOIN (SELECT COUNT(*) like_sum,on_num FROM onlike GROUP BY on_num) l
+        ON o.on_num = l.on_num
+        LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,on_num FROM onstar GROUP BY on_num) r
+        ON o.on_num=r.on_num
+	 	)
+UNION ALL
+    (SELECT 
+        o.onoff,
+            o.off_name,
+           o.off_price,
+           o.category_num,
+           d.name,
+           o.mimage,
+           o.off_num,
+           NVL(l.like_sum,0) like_sum,
+           NVL(r.rating,0.0) rating,
+           NVL(r.rating*20,0.0) rating_percent
+        FROM offclass o
+        JOIN ouser_detail d
+        ON o.user_num = d.user_num
+        LEFT OUTER JOIN (SELECT COUNT(*) like_sum,off_num FROM offlike GROUP BY off_num) l
+        ON o.off_num = l.off_num
+        LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,off_num FROM offstar GROUP BY off_num) r
+        ON o.off_num=r.off_num
+        )
+) ORDER BY rating DESC)a)
+		<![CDATA[WHERE rnum >=1 AND rnum <= 4]]>
+</select>
+<select id="selectListOffMain" parameterType="map" resultType="offclassVO">
+		SELECT
+		  *
+		FROM (SELECT 
+		       a.*,
+		       rownum rnum
+		      FROM (SELECT 
+		               <![CDATA[
+		               REPLACE(REPLACE(o.off_name,'<','&lt;'),'>','&gt;') off_name,
+		               ]]>
+		               o.off_price,
+		               o.category_num,
+		               d.name,
+		               o.mimage,
+		               o.off_num,
+		               NVL(l.like_sum,0) like_sum,
+                       NVL(r.rating,0.0) rating
+		            FROM offclass o
+		            JOIN ouser_detail d
+		            ON o.user_num = d.user_num
+                    LEFT OUTER JOIN (SELECT COUNT(*) like_sum,off_num FROM offlike GROUP BY off_num) l
+                    ON o.off_num = l.off_num
+                    LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,off_num FROM offstar GROUP BY off_num) r
+                    ON o.off_num=r.off_num
+				 	ORDER BY o.off_num DESC)a)
+		<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
+	</select>
+	
+	<select id="selectListOnMain" parameterType="map" resultType="onclassVO">
+		SELECT * FROM (SELECT a.*,rownum rnum
+		FROM (SELECT 
+		<![CDATA[REPLACE(REPLACE(o.on_name,'<','&lt;'),'>','&gt;') on_name,]]>
+        o.on_price,
+        o.category_num,
+        d.name,
+        o.mimage,
+        o.on_num,
+        NVL(l.like_sum,0) like_sum,
+        NVL(r.rating,0.0) rating		
+		FROM onclass o
+		JOIN ouser_detail d
+		ON o.user_num = d.user_num
+		LEFT OUTER JOIN (SELECT COUNT(*) like_sum,on_num FROM onlike GROUP BY on_num) l
+        ON o.on_num = l.on_num
+        LEFT OUTER JOIN (SELECT ROUND(avg(rating),1) rating,on_num FROM onstar GROUP BY on_num) r
+        ON o.on_num=r.on_num
+	 	ORDER BY o.on_num DESC)a) 
+	 	<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
+	 	
+	</select>
+</mapper>

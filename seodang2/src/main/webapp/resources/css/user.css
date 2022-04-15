@@ -1,0 +1,205 @@
+@charset "UTF-8";
+body, th, td, input, select, textarea, button { font-size: 14px; line-height: 1.5; font-family: HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic','맑은 고딕',sans-serif; color: #212121; }
+ul#modify_passwd{
+	font-size: 130%;
+    border: 2px solid #c0c0c0;
+    height:200px;
+    position: relative;
+    left:100px;
+    width: 500px;
+    margin: 10 auto;
+	padding: 10px 10px 10px;
+}  
+
+input#name{
+	width: 200px;
+	height:25px;
+}
+input#phone{
+	width: 200px;
+	height:25px;
+	
+}
+input#zipcode{
+	width: 200px;
+	height:25px;
+}
+input#address1{
+	width: 200px;
+	height:25px;
+}
+input#address2{
+	width: 200px;
+	height:25px;
+}
+input#email{
+	width: 200px;
+	height:25px;
+}
+input#age{
+	width: 200px;
+	height:25px;
+}
+input#now_passwd{
+	width: 200px;
+	height:25px;
+}
+
+input#confirm_passwd{
+	width: 200px;
+	height:25px;
+}
+input[type=number]{
+	width: 100px;
+	height:25px;
+	
+}
+
+li#file{
+	position: relative;
+    top:30px;
+
+}
+.modify_input{
+	position: relative;
+	top:10px;
+	left:300px;
+}
+input[type="email"] {
+	width: 200px;
+}
+
+#register_form input[id="id"] {
+	width: 113px;
+	text-align:center;
+}
+
+input[id="zipcode"] {
+	width: 95px;
+}
+
+#modify_password,#delete_form{
+	width:700px;
+	margin:0 auto;
+	border: 2px solid #c0c0c0;
+}
+#menu_form{
+	width:850px;
+	margin:0 auto;
+	border: 2px solid #c0c0c0;
+}
+#my_form{
+	width:850px;
+	margin:0 auto;
+	border: 2px solid #c0c0c0;
+}
+#modify_password input,#delete_form,#modify_form input,#login_form input{
+	margin-bottom:10px;
+}
+
+#modify_password ul li label{
+	width:150px;
+}
+
+.my-photo {
+	object-fit: cover;
+	object-position: top;
+	border-radius: 50%;
+}
+
+ul.profile-photo {
+	list-style: none;
+}
+
+ul.profile-photo li {
+	display: inline;
+	padding-left: 5px;
+}
+
+div#cen_img {
+	display: block;
+	margin: auto;
+}
+
+.menu_input{
+	position: relative;
+	top:10px;
+	text-align: center;
+}
+
+.container-right {
+	width: 1600px;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 1.13em;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-nopadding {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+input.btn.btn-outline-secondary,button.btn.btn-outline-secondary {
+    width: 200px;
+    height: 41px;
+    font-size: 16px;
+}
+
+.modify-delete-btn {
+    margin-left: auto;
+}
+form#detail-shopping {
+    padding: 9px 0;
+    width: 100%;
+}
+input.btn.btn-outline-secondary.shopping {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    background-color: #1B1A17;
+    color: white;
+}
+button#like_btn {
+    border-radius: 7px;
+    height: 47px;
+    font-size: 21px;
+}
+button.btn.detail-replybtn {
+    font-size: 16px;
+    background-color: #1B1A17;
+    color: white;
+    padding: 8px 18px;
+}
+input.btn.replylist-btn {
+    font-size: 19px;
+    width: 100%;
+    background-color: #cecece8f;
+    padding: 12px;
+    margin: 32px 0;
+}
+button.btn.reply {
+    padding: 0;
+}

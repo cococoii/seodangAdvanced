@@ -1,0 +1,136 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
+/*키트 목록 display: flex;*/
+
+
+
+listpage{
+  padding:200px 0px 0px 0px;
+  width: 98%;
+  margin: 0 auto;
+}
+ul{
+	list-style:none;
+}
+li{
+	float:left;
+}
+.list-main {
+	margin: 25px auto;
+	padding: 0;
+	width: 1500px;
+	text-align: center;
+	flex-direction:row;
+	justify-content:space-between;	
+}
+div#page_num{
+    text-align: center;
+}
+
+/*검색창*/
+input[type="search"]{
+	width:250px;
+	height:40px;
+	border: 2px solid #c0c0c0;
+	border-radius:5px;
+}
+input[type="submit"]{
+	width: 100px;
+	height:40px;
+	position: relative;
+    left: 10px;
+}
+input[type="button"],[type="submit"]{
+	font-family: 'Jeju Gothic', sans-serif;
+	width: 100px;
+	height:40px;
+	border: 2px solid #c0c0c0;
+	border-radius:5px;
+	font-size: 100%;
+}
+select#keyfield{
+	font-size:90%;
+	width:130px;
+	height:40px;
+	text-align: center;
+	position: relative;
+    right: 10px;
+    border: 2px solid #c0c0c0;
+    font-family: 'Jeju Gothic', sans-serif;
+	border-radius:5px;
+}
+
+form#search_form{
+	height:30px;
+	
+}
+.kit_listpage{
+	font-family: 'Jeju Gothic', sans-serif;
+}
+.box:hover{
+	transform: scale(1.1);
+  transition: transform .35s;  
+}
+.box{
+	height:400px;
+	padding: 15px 20px 30px 20px;
+	position: relative;
+    right: 20px;
+    font-family: 'Jeju Gothic', sans-serif;
+}
+div#heart{
+	font-size: 250%;
+	color: #F5A9D0;
+	position: relative;
+    left:70px;
+    bottom:50px;
+}
+div#kit_num{
+	font-weight:20;
+	color:#fff;
+	position: relative;
+    left:100px;
+    top:20px;
+    
+}
+div#kit_name{
+	font-weight:500;
+	float: left;
+}
+div.price{
+	position: absolute;
+}
+
+div#kit_price{
+	float: right;
+}
+td#kit_quantity{
+	font-size:small;
+	float: right;
+}
+table#box3{
+	width: 250px;
+	height:150px;
+}
+table,td,tr,th{
+border-right:none !important;
+border-left:none !important;
+border-top:none !important;
+border-bottom:none !important;	
+}
+div#pagenum{
+	float: buttom;
+}
+div#kit_content2{
+	font-size:small;
+	float: left;
+	border-bottom:1px solid #c0c0c0;
+	width:240px;
+}
+
+<!--     display: flex; justify-content: flex-end -->
+

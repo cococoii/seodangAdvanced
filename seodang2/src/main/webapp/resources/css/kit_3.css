@@ -1,0 +1,145 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
+/*detail*/
+.container-head{
+	display:flex;
+	background-color: #fff;
+    position: sticky;
+    top: 50px;
+}
+.detail_content{
+	display:flex;
+	padding-top:20px;
+}
+div.ck_content{
+	padding:0 10px;
+	width: 66.6667%;
+	font-family: 'Jeju Gothic', sans-serif;
+}
+#kit_content2{
+	border-bottom: 1px solid #c0c0c0;
+    margin:20px 0px 20px 0px;
+    width: 300px;
+}
+#kit_price,#kit_quantity{
+	text-align: right;
+	margin-bottom:20px;
+}
+#heart{
+	position: absolute;
+}
+
+div.price{
+	position: absolute;
+	
+}
+/*width: 33.3333%;*/
+.sidebar {
+	padding:0 10px;
+    display: block;
+}
+.sidbar_content{
+	top: 110px;
+	position: sticky;
+	padding:20px;
+	font-family: 'Jeju Gothic', sans-serif;
+	border: 2px solid #c0c0c0;
+    border-radius:5px;
+    
+}
+span[id="out"]{
+	position: relative;
+	left:18px;
+	color:red;
+	font-family: 'Jeju Gothic', sans-serif;
+}
+input[id="button2"]{
+	width: 300px !important;
+	height:40px !important;
+	position: relative;
+	right:110px;
+	
+}
+input[type="submit"]{
+	width: 300px;
+	height:40px;
+	position: relative;
+    right:110px;
+    font-family: 'Jeju Gothic', sans-serif;
+    border: 2px solid #c0c0c0;
+	border-radius:5px;
+	font-size: 100%;
+}
+input[type="button"]{
+	font-family: 'Jeju Gothic', sans-serif;
+	width: 100px;
+	height:40px;
+	border: 2px solid #c0c0c0;
+	border-radius:5px;
+	font-size: 100%;
+}
+div.kitdetail{
+	position: relative;
+    left:600px;
+    bottom:400px;
+    font-family: 'Jeju Gothic', sans-serif;
+    border: 2px solid #81BEF7;
+    width: 300px;
+ 
+}
+div#kit_content{
+	font-family: 'Jeju Gothic', sans-serif;
+	font-size: 100%;
+    border: 2px solid #81BEF7;
+    height:150px;
+    position: relative;
+    left:100px;
+    bottom:300px;
+}
+
+#detail td{
+	width: 10px;
+	height:50px;
+	border:none;
+	border-radius:5px;
+}
+
+table#detail{
+	border-right:2px solid;
+    border-left:2px solid;
+    border-top:2px solid;
+    border-collapse : collapse;
+    border-bottom:2px solid;
+    text-align: center;
+    padding: 5px;
+    border-radius: 40px/40px;
+}
+
+textarea{
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+  }
+img {
+    max-width: 100%;
+    object-fit: cover; /*이미지 안깨지게*/
+}
+.image-style-side {
+    float: right;
+    margin-right: -200px;
+    margin-left: 50px;
+    margin-top: -50px;
+}
+.image.image_resized {
+    display: block;
+    box-sizing: border-box;
+}
+
+.image.image_resized img {
+    width: 100%;
+}
