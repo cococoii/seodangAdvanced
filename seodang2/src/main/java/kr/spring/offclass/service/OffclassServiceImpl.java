@@ -78,8 +78,7 @@ public class OffclassServiceImpl implements OffclassService{
 
 	@Override
 	public void deleteOffClass(Integer off_num) {
-		// TODO Auto-generated method stub
-		
+		offclassMapper.deleteOffClass(off_num);
 	}
 
 	//찜 기능

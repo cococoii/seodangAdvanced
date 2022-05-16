@@ -162,7 +162,7 @@ $(function(){
 	});
 	
 	//삭제 버튼 클릭 후 alert창
-	 $('#delete-reply').click(function(){
+	$('#delete-reply').click(function(){
 		let choice = confirm('정말 삭제하시겠습니까?');
 		if(choice){
 			$.ajax({
@@ -297,7 +297,7 @@ $(function(){
 			error:function(){
 				alert('네트워크 오류 발생');
 			}
-		});
+			});
 		}
 	});
 });

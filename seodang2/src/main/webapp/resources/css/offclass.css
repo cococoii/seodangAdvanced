@@ -141,7 +141,8 @@ input.btn.btn-outline-secondary,button.btn.btn-outline-secondary {
   transition: .5s ease; /* 필수는 아님 */
  }
 .item-space .horizontal-area .name {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
+    color: #999999;
 }
 .item-space .horizontal-area .image-container {
 	overflow: hidden;

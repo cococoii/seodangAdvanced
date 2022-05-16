@@ -10,8 +10,34 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/videoAdapter.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/offclass.detail.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c937f1e64d49fa65f28e4eafd42ed12d&libraries=services"></script>
-<!-- 아임포트 임포트 -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript">
+	$('#delete-btn').click(function(){
+		let off_num = ${offclass.off_num};
+		alert(off_num);
+		let choice = confirm('정말 삭제하시겠습니까?삭제 후 복구 불가능합니다.');
+		if(choice){
+			$.ajax({
+			type:'post',
+			data:{off_num:off_num},
+			url:'deleteOffClass.do',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인해야 삭제할 수 있습니다.');
+				}else if(param.result=='success'){
+					location.reload();
+				}else{
+					alert('등록 시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		}
+	});
+</script>
 <div class="display-flex margin-100">
 	<div class="img-one"">
 	<img src="${pageContext.request.contextPath}/resources/image_upload/${upfile0.file_name}">
@@ -41,7 +67,7 @@
 			<span class="list-space"></span>
 			<c:if
 				test="${offclass.user_num == session_user_num || session_user_auth==4 }">
-				<input class="btn-orange  width-170" type="button" value="삭제"
+				<input class="btn-orange  width-170" type="button" value="삭제" id="delete-btn"
 					onclick="location.href='offclassDelete.do?off_num=${offclass.off_num}'">
 			</c:if>
 			<span class="list-space"></span>

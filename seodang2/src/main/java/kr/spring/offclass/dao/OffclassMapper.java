@@ -35,6 +35,7 @@ public interface OffclassMapper {
 	public void updateOffClass(OffclassVO offclass);
 	@Delete("DELETE FROM off_timetable WHERE off_num=#{off_num} AND CONCAT(TO_CHAR(time_date,'YY/MM/DD '),time_start) >=TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI')")
 	public void deleteOffTimetable(int off_num);
+	@Delete("DELETE FROM offclass WHERE off_num=#{off_num} CASCADE CONSTRAINTS")
 	public void deleteOffClass(Integer off_num);
 	
 	@Select("SELECT off_num, time_date, time_start, time_end FROM off_timetable WHERE time_num=#{time_num}")

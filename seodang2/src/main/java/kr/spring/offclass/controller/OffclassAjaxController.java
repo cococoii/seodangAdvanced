@@ -178,6 +178,22 @@ public class OffclassAjaxController {
 		return map;
 	}
 	
+	//후기 삭제 - 후기 답변 삭제X
+	@RequestMapping("/offclass/deleteOffClass.do")
+	@ResponseBody
+	public Map<String, Object> deleteOffClass(int off_num,HttpSession session){
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		Integer user_num = (Integer)session.getAttribute("session_user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+			map.put("result","success");
+			offclassService.deleteOffReview(off_num);
+		}
+		return map;
+	}
+	
 	@RequestMapping("/offclass/writeOffReply.do")
 	@ResponseBody
 	public Map<String, String> writeReply(OffstarReplyVO offstarReplyVO,HttpSession session){

@@ -33,14 +33,14 @@
 					<div class="image-container">
 						<img src="imageView.do?off_num=${item.off_num}" >
 					</div>
-					<div class="item-category">
+					<span class="item-category">
 					<c:if test="${item.category_num ==1}">드로잉</c:if>
 					<c:if test="${item.category_num ==2}">플라워</c:if>
 					<c:if test="${item.category_num ==3}">공예</c:if>
 					<c:if test="${item.category_num ==4}">요리</c:if>
 					<c:if test="${item.category_num ==5}">베이킹</c:if>
-					</div>
-					<div class="name">${item.name }</div>
+					</span>
+					<span class="name">${item.name }</span>
 					<div class="title">${item.off_name }</div>
 					<div class="star-heart-money">
 					<div>
