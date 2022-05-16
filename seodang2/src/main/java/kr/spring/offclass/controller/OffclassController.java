@@ -1,8 +1,12 @@
+/*
+ *작성자 : 임소연
+ *파일 역할 : 오프라인 클래스 등록, 목록, 상세, 수정
+ *		    오프라인 클래스 후기 작성, 수정, 목록, 수정
+ */
 package kr.spring.offclass.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
