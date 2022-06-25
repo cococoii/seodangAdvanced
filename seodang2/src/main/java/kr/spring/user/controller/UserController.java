@@ -42,6 +42,7 @@ public class UserController {
 		return new UserVO();
 	}
 
+	//**회원 가입 ,로그인 작성 시작 ** - <임소연>
 	// 회원 등록 폼 호출
 	@GetMapping("/user/registerUser.do")
 	public String form() {
@@ -132,7 +133,9 @@ public class UserController {
 
 		return "redirect:/main/main.do";
 	}
-
+	
+	//회원 가입,로그인 끝 
+	
 	// 내 메뉴 보기
 	@RequestMapping("/user/myMenu.do")
 	public String processMenu(HttpSession session, Model model) {
