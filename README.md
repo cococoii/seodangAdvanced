@@ -20,7 +20,7 @@
 
 ### 💻 담당 역할
 
-- **회원가입, 로그인** 페이지 구현 - 탈퇴회원, 정지회원, 회원 , 관리자 구분하여 명시
+- **[회원가입, 로그인](https://github.com/cococoii/seodangAdvanced/blob/main/seodang2/src/main/java/kr/spring/user/user.md)** 페이지 구현 - 탈퇴회원, 정지회원, 회원 , 관리자 구분하여 명시
 - 오프라인 **등록,수정,상세** 페이지 구현
 - 후기 **작성, 수정, 삭제** 구현
 - **메인** 페이지 구현 - UI, SQL 작성, Swiper API 사용
