@@ -58,7 +58,6 @@ public class MainController {
 				int like_count = onclassService.selectLikeCount(onclassVO.getOn_num());
 				onclassVO.setLike_count(like_count);
 				onclassVO.setRating_percent(onclassVO.getRating()*20);
-				System.out.println("온레이팅 퍼센트 : " + onclassVO.getRating_percent());
 			}
 		}
 		
@@ -77,7 +76,6 @@ public class MainController {
 				offclassVO.setLike_sum(like_count);
 				offclassVO.setRating_percent(offclassVO.getRating()*20);
 				System.out.println(offclassVO.getRating_percent());
-				System.out.println("레이팅 퍼센트 : " + offclassVO.getRating_percent());
 			}
 		}
 		int kit_count = kitService.selectRowCount(map);
